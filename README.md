@@ -6,6 +6,10 @@ This project aims to perform an in-depth analysis of sales data, customer demogr
 ##  This project was broken into weekly tasks;
 <div align="justify">Week one focuses on Database Setup, importing of datasets, creating a data star schema by creating relationship keys between tables as well as initial data cleaning, thereby preparing the data for data analysis.</div>
 
+## Prerequisite
+SQLite or DV Browser for SQLite (recommended) is required in order to run the queries in the SQL file i uploaded in this repository.
+
+
 ## Datasets Import
 The datasets used for this project were CSV files which were stored on a Google Drive, and they were imported using DB Browser for SQLite.
 The tables imported were sales (for 2015, 2016, and 2017), Rerturns, Product, Customer, Territory, Product, Product_Categories, Product_Subcategories.
@@ -103,22 +107,34 @@ Contains detailed information about product subcategories:
 - FactSales(OrderDate) → Calendar(OrderDate)
 - FactReturns(ProductKey) → Products(ProductKey)
 - FactReturns(TerritoryKey) → Territories(SalesTerritoryKey)
+- DimProducts(ProductSubcategoryKey) → DimProductSubcategories(ProductSubcategoryKey)
+- DimProductSubcategories(ProductCategoryKey) → DimProductCategories(ProductCategoryKey)
 
 
-
-DimProducts(ProductSubcategoryKey) → DimProductSubcategories(ProductSubcategoryKey)
-
-DimProductSubcategories(ProductCategoryKey) → DimProductCategories(ProductCategoryKey)
-
+## Usage Notes
+Ensure foreign key relationships are correctly established to maintain data integrity.
+Use the fact tables for querying transactional data and dimension tables for descriptive attributes.
 
 
+## Files in This Repository
+#### 1. SQL Script File (AdventuresWorksQueryScript.sql)
+This file contains all SQL commands used to create the star schema, including:
 
-This project defines a star schema for the AdventureWorks sales data. The Fact tables include sales and return records, while the Dimension tables contain data such as product information, calendar details, customer demographics, and territory data.
-
-<div align="justify"> </div>
-
+- Table creation: Defines fact and dimension tables with explicit column definitions
+- Primary and foreign keys: Sets up constraints linking the tables for referential integrity.
+- Data cleanup: Scripts to check for null or duplicate values and ensure data integrity.
+- Relationship checks: Queries to validate if the star schema relationships between tables are well-defined.
   
-##
+#### 2. ER Diagram (ERDiagram.png)
 
+An ER diagram depicting the star schema, with fact tables at the center and dimension tables connected to them. The diagram provides a visual representation of the relationships between:
+
+- FactSales table with the Products, Customers, Territories, and Calendar tables.
+- FactReturns table linked to Products and Territories tables.
+
+#### 3. README File (README.md)
+This file provides an overview of the week one project task, instructions for reproducing the schema, and additional project details.
+
+##This is the png file of the ERDiagram for this project
 
 ![](ERDiagram_Adventure_Works.png)
