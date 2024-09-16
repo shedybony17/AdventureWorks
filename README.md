@@ -110,10 +110,15 @@ Contains detailed information about product subcategories:
 - DimProducts(ProductSubcategoryKey) → DimProductSubcategories(ProductSubcategoryKey)
 - DimProductSubcategories(ProductCategoryKey) → DimProductCategories(ProductCategoryKey)
 
+##  Useful Relationships Summary
+- FactSales and FactReturns reference dimension tables through foreign keys to ensure data integrity and enable detailed analysis.
+- Products is linked to DimProductSubcategories and DimProductCategories to provide hierarchical product data.
 
 ## Usage Notes
-Ensure foreign key relationships are correctly established to maintain data integrity.
-Use the fact tables for querying transactional data and dimension tables for descriptive attributes.
+- Fact Tables: Use for transaction-based queries and aggregations
+- Dimension Tables: Use for descriptive and categorical analysis
+- Ensure foreign key relationships are correctly established to maintain data integrity
+- Use the fact tables for querying transactional data and dimension tables for descriptive attributes
 
 
 ## Files in This Repository
